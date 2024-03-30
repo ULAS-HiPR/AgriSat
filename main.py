@@ -1,22 +1,26 @@
+#!/usr/bin/python3
+ 
 from handlers.LogHandler import LogHandler
 from clients.CameraClient import CameraClient
-from multiprocessing import Process
+
+from threading import Thread
 
 
 def main():
-    logger.info("Starting...")
+    logger.info("Started")
 
-    clients = [CameraClient()]
-    processes = [Process(target=c.run) for c in clients]
+    clients = [CameraClient(),]
+    threads = [Thread(target=client.run) for client in clients]
 
-    # Start all processes
-    for process in processes:
-        process.start()
+    for thread in threads:
+        thread.start()
+        
+    logger.info("Running...")
 
-    # Wait for all processes to complete
-    for process in processes:
-        process.join()
-
+    for thread in threads:
+        thread.join()
+        
+    logger.info("Finished")
 
 if __name__ == "__main__":
     logger = LogHandler(log_file="logs/main.log")

@@ -1,6 +1,7 @@
 env
 logs
 *.log
+*.npy
 
 *.pyc
 __pycache__

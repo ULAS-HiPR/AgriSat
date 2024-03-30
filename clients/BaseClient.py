@@ -1,20 +1,29 @@
-import multiprocessing
+import threading
 from abc import ABC, abstractmethod
 
-from handlers.StoreHandler import StoreHandler
 
-
-class BaseClient(multiprocessing.Process, ABC):
+class BaseClient(threading.Thread, ABC):
     def __init__(self):
-        multiprocessing.Process.__init__(self)
+        threading.Thread.__init__(self)
+        self.running = True
 
     @abstractmethod
     def read(
         self,
     ):
-        # Must return payload from sensor i.e image, temperature, etc.
+        """
+        Must return payload from sensor i.e image, temperature, etc.
+        """
         pass
+    
+    @abstractmethod
+    def persist(self, data):
+        """
+        Must implement function to save read data
+        """
+        pass 
 
     def run(self):
-        data = self.read_client()
-        StoreHandler().update_dataframe(data)
+        while self.running:
+            data = self.read()
+            self.persist(data)
