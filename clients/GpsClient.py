@@ -3,7 +3,7 @@ import numpy as np
 import serial
 import busio
 import adafruit_gps
-import time
+from datetime import datetime
 
 from .BaseClient import BaseClient
 
