@@ -1,31 +1,31 @@
-import os
-import numpy as np
 import serial
-import busio
 import adafruit_gps
 from datetime import datetime
 
 from .BaseClient import BaseClient
+from handlers.CSVHandler import CSVHandler
 
-#pi must be set up with adafruit blinka (see notion guide)
+# pi must be set up with adafruit blinka (see notion guide)
+
+
 class GpsClient(BaseClient):
     def __init__(self):
         super().__init__()
-        uart = serial.Serial("/dev/ttyS0", baudrate=9600, timeout=3000)
-        self.gps = adafruit_gps.GPS(uart, debug=False)  
-    
+        self.csv = CSVHandler("gps", ["time", "latitude", "longitude"])
+
+        self.gps = adafruit_gps.GPS(
+            serial.Serial("/dev/ttyS0", baudrate=9600, timeout=3000), debug=False
+        )
+
         self.gps.send_command(b"PMTK314,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0")
         self.gps.send_command(b"PMTK220,1000")
 
     def read(self):
         self.gps.update()
         if not self.gps.has_fix:
-            return "no fix"
+            return (-1, -1)  # Non breaking error
 
-        return (str(self.gps.latitude) + ", " + str(self.gps.longitude))
-    
+        return (self.gps.latitude, self.gps.longitude)
+
     def persist(self, data):
-        time = str(datetime.now())
-        data =  str(time) + ", " + data
-        with open("gps.csv", "a") as f:
-            f.write(data + "\n")
+        self.csv.write([str(datetime.now()), *data])
