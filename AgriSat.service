@@ -1,0 +1,12 @@
+[Unit]
+Description=AgriSat Service
+
+[Service]
+ExecStart=/home/agrisat/AgriSat/start.sh
+WorkingDirectory=/home/agrisat/AgriSat
+User=agrisat
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
