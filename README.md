@@ -20,6 +20,8 @@ python main.py
 
 ## Testing
 
+Testing metrics (coverage - statement and branch) are available in `coverage_report.md` [here](coverage_report.md).
+
 ```bash
 coverage run -m unittest discover -s tests
 coverage report
