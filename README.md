@@ -21,16 +21,24 @@ python main.py
 ## Testing
 
 ```bash
-coverage run -m unittest discover -s tests
+coverage run --source=clients,handlers,. -m unittest discover -s tests
 coverage report
 ```
 
 ### Coverage metrics
-| Name                      |    Stmts |     Miss |   Cover |
-|-------------------------- | -------: | -------: | ------: |
-| handlers/CSVHandler.py    |       12 |        0 |    100% |
-| handlers/LogHandler.py    |       29 |        0 |    100% |
-| handlers/\_\_init\_\_.py  |        0 |        0 |    100% |
-| tests/test\_CSVHandler.py |       32 |        1 |     97% |
-| tests/test\_LogHandler.py |       48 |        1 |     98% |
-|                 **TOTAL** |  **121** |    **2** | **98%** |
+
+| Name                        | Stmts    | Miss     | Cover   |
+|---------------------------- | -------: | -------: | ------: |
+| clients/AlitimeterClient.py |       24 |       24 |      0% |
+| clients/BaseClient.py       |       16 |       16 |      0% |
+| clients/CameraClient.py     |       18 |       18 |      0% |
+| clients/GpsClient.py        |       19 |       19 |      0% |
+| clients/LoraClient.py       |       14 |       14 |      0% |
+| clients/NetClient.py        |        9 |        9 |      0% |
+| handlers/CSVHandler.py      |       12 |        0 |    100% |
+| handlers/LogHandler.py      |       29 |        0 |    100% |
+| handlers/\_\_init\_\_.py    |        0 |        0 |    100% |
+| main.py                     |       19 |       19 |      0% |
+| tests/test\_CSVHandler.py   |       32 |        1 |     97% |
+| tests/test\_LogHandler.py   |       48 |        1 |     98% |
+|                   **TOTAL** |  **240** |  **121** | **50%** |
