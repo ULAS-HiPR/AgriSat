@@ -10,7 +10,7 @@ class LogHandler:
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(log_level)
 
-        formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+        formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
 
         if log_file:
             file_handler = RotatingFileHandler(
