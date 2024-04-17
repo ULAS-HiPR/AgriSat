@@ -20,9 +20,17 @@ python main.py
 
 ## Testing
 
-Testing metrics (coverage - statement and branch) are available in `coverage_report.md` [here](coverage_report.md).
-
 ```bash
 coverage run -m unittest discover -s tests
 coverage report
 ```
+
+### Coverage metrics
+| Name                      |    Stmts |     Miss |   Cover |
+|-------------------------- | -------: | -------: | ------: |
+| handlers/CSVHandler.py    |       12 |        0 |    100% |
+| handlers/LogHandler.py    |       29 |        0 |    100% |
+| handlers/\_\_init\_\_.py  |        0 |        0 |    100% |
+| tests/test\_CSVHandler.py |       32 |        1 |     97% |
+| tests/test\_LogHandler.py |       48 |        1 |     98% |
+|                 **TOTAL** |  **121** |    **2** | **98%** |
