@@ -7,7 +7,7 @@ class NetClient(BaseClient):
         self.queue = queue
 
     def read(self):
-        return self.queue.get()["timestamp"]
+        return self.queue.get()["time"]
 
     def persist(self, data):
         print(data)

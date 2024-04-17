@@ -22,6 +22,4 @@ class CameraClient(BaseClient):
         return np.resize(image, (256, 256, 3))
 
     def persist(self, data):
-        self.queue.put(
-            {"timestamp": time.time(), "frame": self.frame_count, "data": data}
-        )
+        self.queue.put({"time": time.time(), "frame": self.frame_count, "data": data})

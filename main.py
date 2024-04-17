@@ -5,17 +5,22 @@ from threading import Thread
 
 from clients.CameraClient import CameraClient
 from clients.NetClient import NetClient
+from clients.AltimeterClient import AltimeterClient
+from clients.GpsClient import GpsClient
+
 from handlers.LogHandler import LogHandler
 
 
 def main():
     logger.info("Started")
 
-    captures = Queue()
+    captures = Queue()  # connect clients via queue
 
     clients = [
         CameraClient(captures),
         NetClient(captures),
+        AltimeterClient(),
+        GpsClient(),
     ]
     threads = [Thread(target=client.run) for client in clients]
 
