@@ -21,21 +21,19 @@ python main.py
 ## Testing
 
 ```bash
-coverage run --source=clients,handlers -m unittest discover -s tests
-coverage report
+coverage run --source=clients,handlers  --branch -m unittest discover -s tests
+coverage report --format markdown
 ```
 
-### Coverage metrics
-
-| Name                       |    Stmts |     Miss |   Cover |
-|--------------------------- | -------: | -------: | ------: |
-| clients/AltimeterClient.py |       18 |       18 |      0% |
-| clients/BaseClient.py      |       16 |       16 |      0% |
-| clients/CameraClient.py    |       18 |       18 |      0% |
-| clients/GpsClient.py       |       19 |       19 |      0% |
-| clients/LoraClient.py      |       14 |       14 |      0% |
-| clients/NetClient.py       |        9 |        9 |      0% |
-| handlers/CSVHandler.py     |       12 |        0 |    100% |
-| handlers/LogHandler.py     |       29 |        0 |    100% |
-| handlers/\_\_init\_\_.py   |        0 |        0 |    100% |
-|                  **TOTAL** |  **135** |   **94** | **30%** |
+| Name                       |    Stmts |     Miss |   Branch |   BrPart |   Cover |
+|--------------------------- | -------: | -------: | -------: | -------: | ------: |
+| clients/AltimeterClient.py |       18 |       18 |        0 |        0 |      0% |
+| clients/BaseClient.py      |       16 |       16 |        6 |        0 |      0% |
+| clients/CameraClient.py    |       18 |       18 |        0 |        0 |      0% |
+| clients/GpsClient.py       |       19 |       19 |        2 |        0 |      0% |
+| clients/LoraClient.py      |       14 |       14 |        0 |        0 |      0% |
+| clients/NetClient.py       |        9 |        9 |        0 |        0 |      0% |
+| handlers/CSVHandler.py     |       12 |        0 |        6 |        0 |    100% |
+| handlers/LogHandler.py     |       29 |        0 |        2 |        1 |     97% |
+| handlers/\_\_init\_\_.py   |        0 |        0 |        0 |        0 |    100% |
+|                  **TOTAL** |  **135** |   **94** |   **16** |    **1** | **32%** |
