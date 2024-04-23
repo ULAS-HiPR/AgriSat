@@ -5,8 +5,6 @@ from datetime import datetime
 from .BaseClient import BaseClient
 from handlers.CSVHandler import CSVHandler
 
-# pi must be set up with adafruit blinka (see notion guide)
-
 
 class GpsClient(BaseClient):
     def __init__(self):

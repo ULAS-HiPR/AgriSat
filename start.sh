@@ -1,7 +1,10 @@
 #!/bin/bash -e
 
-echo "Installing necessary packages..."
-pip install -r requirements.txt
+rm -rf logs/*
+rm -rf records/*
+
+echo "Activating env..."
+source ../env/bin/activate
 
 echo "Starting AgriSat..."
 python main.py

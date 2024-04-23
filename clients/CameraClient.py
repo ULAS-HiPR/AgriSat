@@ -8,11 +8,10 @@ from .BaseClient import BaseClient
 class CameraClient(BaseClient):
     def __init__(self, queue):
         super().__init__()
-
         self.frame_count = 0
         self.queue = queue
-
         self.picam2 = Picamera2()
+            
         self.picam2.configure(self.picam2.create_still_configuration())
         self.picam2.start()
 
@@ -23,3 +22,5 @@ class CameraClient(BaseClient):
 
     def persist(self, data):
         self.queue.put({"time": time.time(), "frame": self.frame_count, "data": data})
+        
+        

@@ -12,7 +12,7 @@ from handlers.LogHandler import LogHandler
 
 
 def main():
-    logger.info("Started")
+    logger = LogHandler(log_file="logs/main.log")
 
     captures = Queue()  # connect clients via queue
 
@@ -24,6 +24,7 @@ def main():
     ]
     threads = [Thread(target=client.run) for client in clients]
 
+    logger.info("Ready!")
     for thread in threads:
         thread.start()
 
@@ -36,5 +37,4 @@ def main():
 
 
 if __name__ == "__main__":
-    logger = LogHandler(log_file="logs/main.log")
     main()

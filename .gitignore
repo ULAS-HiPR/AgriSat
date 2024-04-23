@@ -1,6 +1,6 @@
 env
 logs
-captures
+records
 *.log
 *.npy
 
