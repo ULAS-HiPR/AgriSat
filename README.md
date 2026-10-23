@@ -1,3 +1,7 @@
+> [!WARNING]
+> This project is archived, and is no longer actively supported.
+> Contact us for more details.
+
 # AgriSat
 
 This project is the operations for data processing and analysis of satellite images for agriculture from a CanSat running a Raspberry Pi at the edge. For parallelism we use child processes via sensor `clients` and using `handlers` for logging, persistence and data processing.
